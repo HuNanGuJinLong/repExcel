@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.meihao.uploadexcel.mapper.MessagesMapper">
+    <resultMap id="BaseResultMap" type="com.meihao.uploadexcel.entity.Messages">
+        <!--@mbg.generated-->
+        <!--@Table messages-->
+        <result column="classes" jdbcType="VARCHAR" property="classes"/>
+        <result column="number" jdbcType="VARCHAR" property="number"/>
+        <result column="headmaster" jdbcType="VARCHAR" property="headmaster"/>
+        <result column="handleMan" jdbcType="VARCHAR" property="handleman"/>
+        <result column="date" jdbcType="VARCHAR" property="date"/>
+        <result column="bookName" jdbcType="VARCHAR" property="bookname"/>
+        <result column="author" jdbcType="VARCHAR" property="author"/>
+        <result column="Press" jdbcType="VARCHAR" property="press"/>
+        <result column="quantity" jdbcType="VARCHAR" property="quantity"/>
+        <result column="price" jdbcType="VARCHAR" property="price"/>
+        <result column="autograph" jdbcType="VARCHAR" property="autograph"/>
+        <result column="remarks" jdbcType="VARCHAR" property="remarks"/>
+        <result column="objectName" jdbcType="VARCHAR" property="objectname"/>
+        <result column="ISBN" jdbcType="VARCHAR" property="isbn"/>
+        <result column="id" jdbcType="INTEGER" property="id"/>
+    </resultMap>
+    <insert id="insert" parameterType="com.meihao.uploadexcel.entity.Messages">
+        <!--@mbg.generated-->
+        insert into messages (classes, `number`, headmaster,
+        handleMan, `date`, bookName,
+        author, Press, quantity,
+        price, autograph, remarks,
+        objectName, ISBN, id
+        )
+        values (#{classes,jdbcType=VARCHAR}, #{number,jdbcType=VARCHAR}, #{headmaster,jdbcType=VARCHAR},
+        #{handleman,jdbcType=VARCHAR}, #{date,jdbcType=VARCHAR}, #{bookname,jdbcType=VARCHAR},
+        #{author,jdbcType=VARCHAR}, #{press,jdbcType=VARCHAR}, #{quantity,jdbcType=VARCHAR},
+        #{price,jdbcType=VARCHAR}, #{autograph,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR},
+        #{objectname,jdbcType=VARCHAR}, #{isbn,jdbcType=VARCHAR}, #{id,jdbcType=INTEGER}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.meihao.uploadexcel.entity.Messages">
+        <!--@mbg.generated-->
+        insert into messages
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="classes != null">
+                classes,
+            </if>
+            <if test="number != null">
+                `number`,
+            </if>
+            <if test="headmaster != null">
+                headmaster,
+            </if>
+            <if test="handleman != null">
+                handleMan,
+            </if>
+            <if test="date != null">
+                `date`,
+            </if>
+            <if test="bookname != null">
+                bookName,
+            </if>
+            <if test="author != null">
+                author,
+            </if>
+            <if test="press != null">
+                Press,
+            </if>
+            <if test="quantity != null">
+                quantity,
+            </if>
+            <if test="price != null">
+                price,
+            </if>
+            <if test="autograph != null">
+                autograph,
+            </if>
+            <if test="remarks != null">
+                remarks,
+            </if>
+            <if test="objectname != null">
+                objectName,
+            </if>
+            <if test="isbn != null">
+                ISBN,
+            </if>
+            <if test="id != null">
+                id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="classes != null">
+                #{classes,jdbcType=VARCHAR},
+            </if>
+            <if test="number != null">
+                #{number,jdbcType=VARCHAR},
+            </if>
+            <if test="headmaster != null">
+                #{headmaster,jdbcType=VARCHAR},
+            </if>
+            <if test="handleman != null">
+                #{handleman,jdbcType=VARCHAR},
+            </if>
+            <if test="date != null">
+                #{date,jdbcType=VARCHAR},
+            </if>
+            <if test="bookname != null">
+                #{bookname,jdbcType=VARCHAR},
+            </if>
+            <if test="author != null">
+                #{author,jdbcType=VARCHAR},
+            </if>
+            <if test="press != null">
+                #{press,jdbcType=VARCHAR},
+            </if>
+            <if test="quantity != null">
+                #{quantity,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null">
+                #{price,jdbcType=VARCHAR},
+            </if>
+            <if test="autograph != null">
+                #{autograph,jdbcType=VARCHAR},
+            </if>
+            <if test="remarks != null">
+                #{remarks,jdbcType=VARCHAR},
+            </if>
+            <if test="objectname != null">
+                #{objectname,jdbcType=VARCHAR},
+            </if>
+            <if test="isbn != null">
+                #{isbn,jdbcType=VARCHAR},
+            </if>
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+
+    <insert id="insertList" parameterType="com.meihao.uploadexcel.entity.Messages">
+        insert into
+        gujinlong.messages
+        (classes,number,headmaster,handleMan,date,bookName,author,Press,quantity,price,autograph,remarks,objectName,ISBN)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.classes,jdbcType=NVARCHAR},
+            #{item.number,jdbcType=NVARCHAR},
+            #{item.headmaster,jdbcType=NVARCHAR},
+            #{item.handleman,jdbcType=NVARCHAR},
+            #{item.date,jdbcType=NVARCHAR},
+            #{item.bookname,jdbcType=NVARCHAR},
+            #{item.author,jdbcType=NVARCHAR},
+            #{item.press,jdbcType=NVARCHAR},
+            #{item.quantity,jdbcType=NVARCHAR},
+            #{item.price,jdbcType=NVARCHAR},
+            #{item.autograph,jdbcType=NVARCHAR},
+            #{item.remarks,jdbcType=NVARCHAR},
+            #{item.objectname,jdbcType=NVARCHAR},
+            #{item.isbn,jdbcType=NVARCHAR}
+            )
+        </foreach>
+    </insert>
+</mapper>

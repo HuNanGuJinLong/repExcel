@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>success</title>
+</head>
+<style type="text/css">
+    a{text-decoration:none;}
+</style>
+<body>
+<h3>表格上传完毕</h3>
+<button th:id="btn" th:onclick="btn()">生成表格</button><br>
+
+
+
+<div th:id="one">
+    <span th:id="two" th:text="${oex}"></span><br>
+    <span th:id="three" th:text="${uex}"></span><br>
+    <span th:id="fore" th:text="${aex}"></span><br>
+
+
+
+
+</div>
+ <div th:id="six">
+     <table th:id="seven">
+         <tr th:each="exceptions:${qyx}">
+             <td th:text="${exceptions.exception}"></td>
+         </tr>
+     </table>
+ </div>
+
+  <!--  <button type="button"  id="btn">点击重新生成表格</button>-->
+
+<script type="text/javascript" defer=true language="JavaScript">
+    var btn = document.getElementById("btn");
+    btn.onclick=function () {
+        var one = document.getElementById("one");
+        var two = document.getElementById("two");
+        var three = document.getElementById("three");
+        var fore = document.getElementById("fore");
+
+        var six = document.getElementById("six");
+        var seven = document.getElementById("seven");
+        var rows = seven.rows;
+
+        console.log(rows)
+        var con;
+        if (two.innerText.indexOf("为空")!=-1||three.innerText.indexOf("为空")!=-1||
+            fore.innerText.indexOf("为空")!=-1||rows.length>0) {
+            con=confirm("表格信息有错误，你确定生成吗？"); //在页面上弹出对话框
+            if(con==true){
+                alert("****开始生成****");
+                var xhr = new XMLHttpRequest();
+                xhr.open("post","http://localhost:8045/go/writeExcel",true);
+                xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
+                xhr.send("result="+"yes");
+                xhr.onreadystatechange = function(){
+                    if(xhr.status == 200 && xhr.readyState == 4){
+                        alert("****生成完毕(请确认表格信息的完整)****")
+                        window.location.replace("end");
+                    }
+                    console.log(xhr.responseText);
+                }
+            } else{
+                alert("不生成!");
+                window.location.replace("goto");
+            }
+        }else {
+            alert("****开始生成****");
+            var xhr = new XMLHttpRequest();
+            xhr.open("post","http://localhost:8045/go/writeExcel",true);
+            xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=UTF-8");
+            xhr.send("result="+"yes");
+            xhr.onreadystatechange = function(){
+                if(xhr.status == 200 && xhr.readyState == 4){
+                    alert("****生成完毕****")
+                    window.location.replace("end");
+                }
+                console.log(xhr.responseText);
+            }
+        }
+    };
+</script>
+</body>
+</html>
